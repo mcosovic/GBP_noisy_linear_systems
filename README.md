@@ -1,7 +1,7 @@
 # Gaussian Belief Propagation Noisy Linear Systems Solver
 
 ## The System Model
-Gaussian belief propagation (BP) solver for a noisy linear system with real coefficients and variables:
+We observe a noisy linear system with real coefficients and variables:
 
 ![equation](https://latex.codecogs.com/gif.latex?%5Ctextbf%7Bb%7D%20%3D%20%5Ctextbf%7Bf%7D%28%5Ctextbf%7Bx%7D%29%20&plus;%20%5Ctextbf%7Bu%7D)
 
@@ -13,7 +13,7 @@ The solution can be obtained by solving linear weighted least-squares (WLS) prob
 
 where **A** is the Jacobian matrix of linear functions or the coefficient  matrix for our system, and **W** is a diagonal matrix containing inverses of observation variances. 
 
-Further, the solution to the problem can be found via maximization of the likelihood function which is defined via likelihoods of independent observations, and that can be efficiently solved utilizing factor graphs and the BP algorithm. 
+Further, the solution to the problem can be found via maximization of the likelihood function which is defined via likelihoods of independent observations, and that can be efficiently solved utilizing factor graphs and the Gaussian belief propagation (BP) algorithm. 
 
 ## Input Data
 data.mat file with variables:
