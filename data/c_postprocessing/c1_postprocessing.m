@@ -10,7 +10,7 @@
 
 
 %-------------------State Estimation Evaluation----------------------------
- if user.valuation == 1
+ if user.error == 1
     [wls, bp] = c2_valuation(wls, bp);
  end    
 %--------------------------------------------------------------------------

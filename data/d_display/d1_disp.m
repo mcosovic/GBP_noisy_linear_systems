@@ -15,7 +15,7 @@
 
 
 %-------------------State Estimation Evaluation Terminal--------------------
- if user.valuation == 1
+ if user.error == 1
     d4_valuation(wls, bp)
  end
 %-------------------------------------------------------------------------- 
