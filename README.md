@@ -1,7 +1,7 @@
 # Gaussian Belief Propagation Noisy Linear Systems Solver
 
 ## The System Model
-We observe a noisy linear system with real coefficients and variables:
+We observe a noisy linear system of equations with real coefficients and variables:
 
 ![equation](https://latex.codecogs.com/gif.latex?%5Ctextbf%7Bb%7D%20%3D%20%5Ctextbf%7Bf%7D%28%5Ctextbf%7Bx%7D%29%20&plus;%20%5Ctextbf%7Bu%7D)
 
