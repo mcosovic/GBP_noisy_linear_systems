@@ -37,8 +37,8 @@
 %   user.radius - compute spectral radius for synchronous and randomized
 %                 damping scheduling, if spectral radius is less than 1  
 %                 the BP algorithm converges;
-%   user.valuation - compute mean absolute error, root mean square error
-%                    and weighted residual sum of squares for solution;
+%   user.error  - compute mean absolute error, root mean square error
+%                 and weighted residual sum of squares for solution;
 %
 % Design of Iteration Scheme:
 %   user.stop - the BP algorithm in the iteration loop is running until 
@@ -74,10 +74,13 @@
 %--------------------------------------------------------------------------
 
 %--------------------------------------------------------------------------
-% More information about parameters: 
-%  M. Cosovic and D. Vukobratovic, "Distributed Gauss-Newton Method for 
-%  State Estimation Using Belief Propagation," in IEEE Transactions on 
-%  Power Systems, vol. 34, no. 1, pp. 648-658, Jan. 2019.
+% More information: 
+% - M. Cosovic and D. Vukobratovic, "Distributed Gauss-Newton Method for 
+%   State Estimation Using Belief Propagation," in IEEE Transactions on 
+%   Power Systems, vol. 34, no. 1, pp. 648-658, Jan. 2019.
+% - M. Cosovic, "Design and Analysis of Distributed State Estimation 
+%   Algorithms Based on Belief Propagation and Applications in Smart 
+%   Grids." arXiv preprint arXiv:1811.08355 (2018).
 %--------------------------------------------------------------------------
 
 
@@ -88,8 +91,8 @@
  
 
 %-----------------------Post-processing Options----------------------------
- user.radius = 0;
- user.error  = 0;
+ user.radius = 1;
+ user.error  = 1;
 %--------------------------------------------------------------------------
  
 

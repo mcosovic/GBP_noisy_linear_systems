@@ -17,8 +17,7 @@
  Qn      = Q(:,1:r);                                                           
  U       = R(1:r,1:r);    
 
- x     = P * [U \ (Qn' * rti); sparse(bp.Nvar - r, 1)]; 
- wls.x = full(x);
- 
+ wls.x = full(P * [U \ (Qn' * rti); sparse(bp.Nvar - r, 1)]); 
+
  wls.time = toc; 
 %--------------------------------------------------------------------------

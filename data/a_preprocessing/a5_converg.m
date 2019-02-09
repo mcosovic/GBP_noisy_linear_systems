@@ -7,6 +7,4 @@
  bp.Nmsg = length(bp.idx);
  temp    = ones(bp.Nmsg, 1);
  bp.wow  = logical(binornd(temp, user.prob));
- 
- bp.pre_time = toc;
 %--------------------------------------------------------------------------

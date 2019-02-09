@@ -45,11 +45,11 @@ for kk = 1:bp.Nmsg
     nr = length(bp.idx(br));
     nc = length(bp.idx(bc));
      
-    bp.rowi(sr + 1: sr + nr) = kk * ones(nr, 1);
-    row_idx(sr + 1: sr + nr) = bp.idx(br);
+    bp.rowi(sr + 1 : sr + nr) = kk * ones(nr, 1);
+    row_idx(sr + 1 : sr + nr) = bp.idx(br);
     
-    bp.coli(sc + 1: sc + nc) = kk * ones(nc, 1);
-    col_idx(sc + 1: sc + nc) = bp.idx(bc);
+    bp.coli(sc + 1 : sc + nc) = kk * ones(nc, 1);
+    col_idx(sc + 1 : sc + nc) = bp.idx(bc);
     loc_idx(kk) = c;
      
     sr = sr + nr;
@@ -61,7 +61,7 @@ end
 %--------------------------------------------------------------------------
 
 
-%-----------------------Expand Local Factor Nodes---------------------------
+%-----------------------Expand Local Factor Nodes--------------------------
  C     = 1 ./ bp.vloc;
  bp.Lv_fv = C(loc_idx);
  

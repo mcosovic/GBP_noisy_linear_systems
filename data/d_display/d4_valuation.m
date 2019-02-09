@@ -1,14 +1,17 @@
  function [] = d4_valuation(wls, bp)
  
+ 
+ 
+ %%
  disp(' ')
  disp('  __________________________________________________________________') 
- disp('    State Estimation Evaluation - Observations and Estimate Values  ')
+ disp('             Evaluation - Observations and Estimate Values          ')
  disp('  ------------------------------------------------------------------') 
- disp('      Measure                               WLS            BP       ')
+ disp('      Measure                                BP           WLS       ')
  disp('  ------------------------------------------------------------------') 
- fprintf('  \t Mean Absolute Error               %12.4e %13.4e \n', [wls.MAE bp.MAE ])
- fprintf('  \t Root Mean Square Error            %12.4e %13.4e \n', [wls.RMSE bp.RMSE])
- fprintf('  \t Weighted Residual Sum of Squares  %12.4e %13.4e \n', [wls.WRSS bp.WRSS])
+ fprintf('  \t Mean Absolute Error               %12.4e %13.4e \n', [bp.mae wls.mae ])
+ fprintf('  \t Root Mean Square Error            %12.4e %13.4e \n', [bp.rmse wls.rmse])
+ fprintf('  \t Weighted Residual Sum of Squares  %12.4e %13.4e \n', [bp.wrss wls.wrss])
  disp('  __________________________________________________________________') 
  
  
