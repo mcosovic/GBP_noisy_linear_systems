@@ -1,4 +1,4 @@
-# GBP_noisy_linear_systems
+# Gaussian Belief Propagation Noisy Linear Systems Solver
 
 ## The System Model
 Gaussian belief propagation (BP) solver for a noisy linear system with real coefficients and variables:
