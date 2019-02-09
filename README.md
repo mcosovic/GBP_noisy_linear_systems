@@ -37,8 +37,8 @@ data.mat file with variables:
 Note: We use an improved BP algorithm that applies synchronous scheduling  with randomized damping. The randomized damping parameter pairs lead to a trade-off between the number of non-converging simulations and the rate of convergence. In general, for the selection of "prob" and "alph" for which only a small fraction of messages are combined with their values in a previous iteration, and that is a case for "prob" close to 0 or "alph" close to 1, we observe a large number of non-converging simulations.
 
 4. Virtual Factor Nodes
-   - **user.mean** - the mean value of virtual factor node;
-   - **user.vari** - the variance value of the virtual factor node;
+   - **user.mean** - the mean value of virtual factor nodes;
+   - **user.vari** - the variance value of the virtual factor nodes;
 
 Note: The virtual factor node is a singly-connected factor node used if the variable node xi is not directly observed. In a usual scenario,  without prior knowledge, the variance of virtual factor nodes tend to infinity. 
 
