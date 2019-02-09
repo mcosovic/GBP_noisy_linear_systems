@@ -3,8 +3,8 @@
 ## The System Model
 Gaussian belief propagation (BP) solver for a noisy linear system with real coefficients and variables:
 
-![lin] (https://latex.codecogs.com/gif.latex?%5Ctextbf%7Bb%7D%20%3D%20%5Ctextbf%7Bf%7D%28%5Ctextbf%7Bx%7D%29%20&plus;%20%5Ctextbf%7Bu%7D)
-                                        b = f(x) + u,
+![equation](https://latex.codecogs.com/gif.latex?%5Ctextbf%7Bb%7D%20%3D%20%5Ctextbf%7Bf%7D%28%5Ctextbf%7Bx%7D%29%20&plus;%20%5Ctextbf%7Bu%7D)
+
 where x is the vector of the state variables (i.e., unknowns), f(x) is the vector of linear functions, b is the vector of observation values and u is the vector of uncorrelated observation errors. Note that the linear system of equations represents an overdetermined system.
 
 The solution can be obtained by solving linear weighted least-squares (WLS) problem:
