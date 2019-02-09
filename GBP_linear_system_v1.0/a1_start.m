@@ -2,15 +2,15 @@
  clearvars
 
 %--------------------------------------------------------------------------
-% Gaussian belief propagation (BP) solver for a noisy linear system with 
-% real coefficients and variables:
+% We observe a noisy linear system of equations with real coefficients and 
+% variables:
 %                           b = f(x) + u,
 % where x is the vector of the state variables (i.e., unknowns), f(x) 
 % is the vector of linear functions, b is the vector of observation
 % values and u is the vector of uncorrelated observation errors. Note that 
 % the linear system of equations represents an overdetermined system.
 %
-% The solutioncan be obtained by solving linear weighted least-squares
+% The solution can be obtained by solving linear weighted least-squares
 % (WLS) problem:
 %                        (A'*W*A)x = A'*W*b
 % where A is the Jacobian matrix of linear functions or the coefficient 
@@ -20,7 +20,7 @@
 % Further, the solution to the problem can be found via maximization of the
 % likelihood function which is defined via likelihoods of independent 
 % observations, and that can be efficiently solved utilizing factor
-% graphs and the BP algorithm. 
+% graphs and the Gaussian belief propagation (BP) algorithm. 
 %--------------------------------------------------------------------------
 
 %--------------------------------------------------------------------------   
