@@ -25,7 +25,7 @@ data.mat file with variables:
  ## User Options
 1. Post-Processing Options:
    - **user.radius** - compute spectral radius for synchronous and randomized damping scheduling, if spectral radius is less than 1 the BP algorithm converges;
-   - **user.valuation** - compute mean absolute error, root mean square error and weighted residual sum of squares for solution;
+   - **user.error**  - compute mean absolute error, root mean square error and weighted residual sum of squares for solution;
 
 2. Design of Iteration Scheme:
    - **user.stop** - the BP algorithm in the iteration loop is running until the criterion is reached, where the criterion is applied on the vector of mean-value messages from factor nodes to variable nodes in two consecutive iterations;
