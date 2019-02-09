@@ -12,7 +12,7 @@
 %
 % The solutioncan be obtained by solving linear weighted least-squares
 % (WLS) problem:
-%                        (A*W*A')x = A'*W*b
+%                        (A'*W*A)x = A'*W*b
 % where A is the Jacobian matrix of linear functions or the coefficient 
 % matrix for our system, and W is a diagonal matrix containing inverses 
 % of observation variances. 
@@ -25,9 +25,9 @@
 
 %--------------------------------------------------------------------------   
 % Input data: data.mat file with variables:
-%    data.A - coefficient matrix of dimensions m x n (m>n);
-%    data.b - observation values column vector of dimensions m x 1;
-%    data.v - observation variances column vector of dimensions m x 1;
+%    data.A - coefficient matrix m x n (m>n);
+%    data.b - observation values column vector dimension of m x 1;
+%    data.v - observation variances column vector dimension of m x 1;
 %--------------------------------------------------------------------------
 
 %--------------------------------------------------------------------------
@@ -65,8 +65,8 @@
 % close to 1, we observe a large number of non-converging simulations.
 %
 % Virtual Factor Nodes
-%   user.mean - the mean value of virtual factor node;
-%   user.vari - the variance value of the virtual factor node;
+%   user.mean - the mean value of virtual factor nodes;
+%   user.vari - the variance value of the virtual factor nodes;
 % Note: The virtual factor node is a singly-connected factor node used 
 % if the variable node xi is not directly observed. In a usual scenario, 
 % without prior knowledge, the variance of virtual factor nodes tend to 
