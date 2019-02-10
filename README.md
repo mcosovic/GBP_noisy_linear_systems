@@ -42,7 +42,7 @@ Note: We use an improved BP algorithm that applies synchronous scheduling  with 
    - **user.mean** - the mean value of virtual factor nodes;
    - **user.vari** - the variance value of the virtual factor nodes;
 
-Note: The virtual factor node is a singly-connected factor node used if the variable node xi is not directly observed. In a usual scenario,  without prior knowledge, the variance of virtual factor nodes tend to infinity. 
+Note: The virtual factor node is a singly-connected factor node used if the variable node x is not directly observed. In a usual scenario,  without prior knowledge, the variance of virtual factor nodes tend to infinity. 
 
 
 ## More information: 
