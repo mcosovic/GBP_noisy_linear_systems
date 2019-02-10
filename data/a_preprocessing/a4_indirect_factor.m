@@ -11,5 +11,5 @@
  bp.zind = data.b(idx_ind);
  bp.vind = data.v(idx_ind);
  
- bp.Nind = bp.Nfac - bp.Ndir;
+ bp.Nind = length(bp.zind); 
 %--------------------------------------------------------------------------

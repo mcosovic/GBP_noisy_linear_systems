@@ -2,24 +2,37 @@
 
 
 
-%-------------------------Directed Factor Nodes---------------------------- 
- bp.Inc = data.A ~= 0;
- 
+%------------------Position of Directed Factor Nodes-----------------------
+ bp.Inc     = data.A ~= 0;
  bp.idx_dir = sum(bp.Inc, 2) == 1;
- bp.Adir    = bp.Inc(bp.idx_dir, :);
-
- bp.zdir = data.b(bp.idx_dir);
- bp.vdir = data.v(bp.idx_dir);
  
- bp.Ndir = sum(bp.idx_dir); 
-%-------------------------------------------------------------------------- 
+ Ndir = sum(bp.idx_dir); 
+%--------------------------------------------------------------------------
 
 
-%-----------------------Scale Directed Factor Nodes------------------------
- Cdir = nonzeros(data.A(bp.idx_dir, :));
+%----------------------Scale Directed Factor Nodes-------------------------
+ Cdir = sum(data.A(bp.idx_dir, :), 2);
+
+ zdir = data.b(bp.idx_dir) ./ Cdir;
+ vdir = data.v(bp.idx_dir) ./ (Cdir.^2);
+%--------------------------------------------------------------------------
+
+
+%------------------Merge Multiple Directed Factor Nodes--------------------
+ Adir = bp.Inc(bp.idx_dir, :);
+ idx = find(sum(Adir));
+
+ vi = spdiags(1 ./ vdir, 0, Ndir, Ndir) * Adir;
+ m  = spdiags(zdir, 0, Ndir, Ndir) * Adir;
+
+ vdiri   = sum(vi);
+ bp.vdir = (1 ./ vdiri(idx))';
  
- bp.zdir = bp.zdir ./ Cdir;
- bp.vdir = bp.vdir ./ (Cdir.^2);
+ msum    = sum(m .* vi); 
+ bp.zdir = (msum(idx)' .* bp.vdir);
+
+ bp.Ndir = length(bp.vdir);
+ bp.Adir = sparse((1:bp.Ndir)', idx, 1, bp.Ndir, bp.Nvar);
 %--------------------------------------------------------------------------
 
 
@@ -34,5 +47,3 @@
  
  bp.Nloc = length(bp.zloc);
 %-------------------------------------------------------------------------- 
-
-

@@ -22,7 +22,7 @@
  disp(' ')
  fprintf ('\tNumber of Variable Nodes: %d\n', bp.Nvar)
  fprintf ('\tNumber of Factor Nodes: %d\n', bp.Nfac)
- fprintf ('\tNumber of Links: %d\n', bp.Nmsg + bp.Ndir)
+ fprintf ('\tNumber of Links: %d\n', bp.Nmsg + bp.Nfac - bp.Nind)
  disp(' ')
  fprintf('\tWeighted Least Squares: %2.5f seconds\n', wls.time)
  fprintf('\tPreprocessing: %2.5f seconds\n', bp.pre_time)
