@@ -2,10 +2,6 @@
 
 The algorithm provides the solution of the linear system of equations with Gaussian noise using belief propagation (BP) applied over factor graph. 
 
-Gaussian belief propagation solver provides 
-
-DC state estimation (SE) problem using the Gaussian BP algorithm. The DC SE model is described by the system of linear functions with real coefficients and variables. The DC model is obtained by linearisation of the non-linear model, and ignores the reactive powers and transmission losses and takes into account only the active powers. Therefore, the DC SE takes only bus voltage angles as state variables.
-
 ## The System Model
 We observe a noisy linear system of equations with real coefficients and variables:
 
