@@ -1,4 +1,4 @@
- function  [wls, bp] = c1_postprocessing(wls, bp, user)
+ function  [wls, bp] = c1_postprocessing(data, wls, bp, user)
   
  
 
@@ -11,7 +11,7 @@
 
 %--------------------State Estimation Evaluation---------------------------
  if user.error == 1
-    [wls, bp] = c2_valuation(wls, bp);
+    [wls, bp] = c2_valuation(data, wls, bp);
  end    
 %--------------------------------------------------------------------------
 

@@ -28,7 +28,7 @@
  
  m_fvp = [];
  stopi = m_vf;
- sivar = [bp.Nmsg 1];
+ sz    = [bp.Nmsg 1];
  
  bp.pre_time = toc + bp.pre_time;
 %-------------------------------------------------------------------------- 
@@ -41,10 +41,10 @@
      
 %------------Messages f -> v - from Indirected Factor Nodes----------------
  cm   = J .* m_vf;
- m_fv = (mind - accumarray(bp.rowi, cm(bp.rowe))) ./ J;
+ m_fv = (mind - accumarray(bp.rowi, cm(bp.rowe), sz)) ./ J;
   
  cv    = J2 .* v_vf;
- v_fvi = J2 ./ (vind + accumarray(bp.rowi, cv(bp.rowe))); 
+ v_fvi = J2 ./ (vind + accumarray(bp.rowi, cv(bp.rowe), sz)); 
 %--------------------------------------------------------------------------
 
  
@@ -63,10 +63,10 @@
 
 
 %-----------------Messages v -> f - to Indirected Nodes--------------------
- v_vf = 1 ./ (accumarray(bp.coli, v_fvi(bp.cole), sivar) + bp.Lv_fv);
+ v_vf = 1 ./ (accumarray(bp.coli, v_fvi(bp.cole), sz) + bp.Lv_fv);
  
  cmv  = m_fv .* v_fvi;
- m_vf = (accumarray(bp.coli, cmv(bp.cole), sivar) + bp.Lm_fv) .* v_vf;
+ m_vf = (accumarray(bp.coli, cmv(bp.cole), sz) + bp.Lm_fv) .* v_vf;
 %--------------------------------------------------------------------------
 
  end
@@ -75,17 +75,23 @@
 
 %---------------------------Iteration Time---------------------------------
  bp.iter_time = toc; 
- tic
 %-------------------------------------------------------------------------- 
 
 
-%-----------------------------Marginals------------------------------------
- varii = accumarray(bp.col, v_fvi) + 1 ./ bp.vloc;
+%------------------------------Marginals-----------------------------------
+ tic
+
+ sz = [bp.Nvar 1];
+
+ varii = accumarray(bp.col, v_fvi, sz) + 1 ./ bp.vloc;
  cmv   = m_fv .* v_fvi;
  
  vari    = 1 ./ varii;
- bp.mean = (accumarray(bp.col, cmv) + bp.zloc ./ bp.vloc) .* vari;
- 
+ bp.mean = (accumarray(bp.col, cmv, sz) + bp.zloc ./ bp.vloc) .* vari;
+%--------------------------------------------------------------------------
+
+
+%------------------------------Save Data-----------------------------------
  bp.v_fvi = v_fvi;
  bp.k     = k;
 %--------------------------------------------------------------------------

@@ -33,7 +33,7 @@
 
 
 %---------------------Local Variances Matrix Vd----------------------------
- l  = spdiags(1 ./ bp.vloc, 0, bp.Nloc, bp.Nloc);
+ l  = spdiags(1 ./ bp.vloc, 0, bp.Nvar, bp.Nvar);
  li = (l * bp.Inc')';
  ij = nonzeros(id);
  Vd = sparse(ij, ij, nonzeros(li), bp.Nmsg, bp.Nmsg);

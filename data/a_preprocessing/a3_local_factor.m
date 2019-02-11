@@ -2,48 +2,60 @@
 
 
 
-%------------------Position of Directed Factor Nodes-----------------------
+%--------------------------Directed Factor Nodes---------------------------
  bp.Inc     = data.A ~= 0;
  bp.idx_dir = sum(bp.Inc, 2) == 1;
+ 
+ zdir = data.b(bp.idx_dir);
+ vdir = data.v(bp.idx_dir);
  
  Ndir = sum(bp.idx_dir); 
 %--------------------------------------------------------------------------
 
 
 %----------------------Scale Directed Factor Nodes-------------------------
- Cdir = sum(data.A(bp.idx_dir, :), 2);
+ coeff = sum(data.A(bp.idx_dir, :), 2);
+ sc    = coeff ~= 1;
 
- zdir = data.b(bp.idx_dir) ./ Cdir;
- vdir = data.v(bp.idx_dir) ./ (Cdir.^2);
+ zdir(sc) = zdir(sc) ./ coeff(sc);
+ vdir(sc) = vdir(sc) ./ (coeff(sc).^2);
 %--------------------------------------------------------------------------
 
 
 %------------------Merge Multiple Directed Factor Nodes--------------------
- Adir = bp.Inc(bp.idx_dir, :);
- idx = find(sum(Adir));
-
- vi = spdiags(1 ./ vdir, 0, Ndir, Ndir) * Adir;
- m  = spdiags(zdir, 0, Ndir, Ndir) * Adir;
-
- vdiri   = sum(vi);
- bp.vdir = (1 ./ vdiri(idx))';
+ Adir = full(bp.Inc(bp.idx_dir, :));
  
- msum    = sum(m .* vi); 
- bp.zdir = (msum(idx)' .* bp.vdir);
+ mrg = sum(Adir) > 1;
+ Amr = Adir(:, mrg);
+ rem = logical(sum(Amr, 2));
+ 
+ vi = spdiags(1 ./ vdir, 0, Ndir, Ndir) * Amr;
+ m  = spdiags(zdir, 0, Ndir, Ndir) * Amr;
+ 
+ vdiri = sum(vi);
+ var   = 1 ./ vdiri';
+  
+ msum = sum(m .* vi); 
+ mean = msum' .* var;
 
- bp.Ndir = length(bp.vdir);
- bp.Adir = sparse((1:bp.Ndir)', idx, 1, bp.Ndir, bp.Nvar);
+ zdir(rem)   = [];
+ vdir(rem)   = [];
+ Adir(rem,:) = [];
+
+ zdir = [zdir; mean];
+ vdir = [vdir; var];
 %--------------------------------------------------------------------------
+ 
 
-
-%--------------------------Local Factor Nodes------------------------------ 
- [~, col] = find(bp.Adir);
+%--------------------------Local Factor Nodes------------------------------  
+ idx      = sum(Adir,1) ~= 0;
+ idx(mrg) = 0;
+ col      = [find(idx) find(mrg)];
 
  bp.zloc = user.mean * ones(bp.Nvar,1);
  bp.vloc = user.vari * ones(bp.Nvar, 1);
  
- bp.zloc(col) = bp.zdir; 
- bp.vloc(col) = bp.vdir;
- 
- bp.Nloc = length(bp.zloc);
+ bp.zloc(col) = zdir; 
+ bp.vloc(col) = vdir;
 %-------------------------------------------------------------------------- 
+

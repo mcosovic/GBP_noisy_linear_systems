@@ -86,7 +86,7 @@
 
 %------------------------------Load Data-----------------------------------
  addpath(genpath('data'))
- load('data30_14.mat')
+ load('data32_14.mat')
 %--------------------------------------------------------------------------
  
 
@@ -117,5 +117,5 @@
 %---------------------------Main Functions---------------------------------
  [bp, wls] = a1_preprocessing(data, user);
  [bp]      = b1_belief_propagation(bp, user); 
- [wls, bp] = c1_postprocessing(wls, bp, user);
+ [wls, bp] = c1_postprocessing(data, wls, bp, user);
 %--------------------------------------------------------------------------
