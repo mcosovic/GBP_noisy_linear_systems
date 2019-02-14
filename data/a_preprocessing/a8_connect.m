@@ -10,4 +10,3 @@
     fprintf('Variable nodes connected only on the singly-conected factor node: %s', g)
  end
 %--------------------------------------------------------------------------
-

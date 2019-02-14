@@ -23,7 +23,7 @@
 
 
 %------------------Merge Multiple Directed Factor Nodes--------------------
- Adir = full(bp.Inc(bp.idx_dir, :));
+ Adir = bp.Inc(bp.idx_dir, :);
  
  mrg = sum(Adir) > 1;
  Amr = Adir(:, mrg);
@@ -58,4 +58,3 @@
  bp.zloc(col) = zdir; 
  bp.vloc(col) = vdir;
 %-------------------------------------------------------------------------- 
-

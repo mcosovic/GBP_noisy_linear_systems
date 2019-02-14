@@ -28,8 +28,10 @@
  
  m_fvp = [];
  stopi = m_vf;
- sz    = [bp.Nmsg 1];
  
+ row_sum = sparse(bp.rowi, bp.rowe, 1, bp.Nmsg, bp.Nmsg);
+ col_sum = sparse(bp.coli, bp.cole, 1, bp.Nmsg, bp.Nmsg);
+
  bp.pre_time = toc + bp.pre_time;
 %-------------------------------------------------------------------------- 
 
@@ -41,10 +43,10 @@
      
 %------------Messages f -> v - from Indirected Factor Nodes----------------
  cm   = J .* m_vf;
- m_fv = (mind - accumarray(bp.rowi, cm(bp.rowe), sz)) ./ J;
+ m_fv = (mind - row_sum * cm) ./ J;
   
  cv    = J2 .* v_vf;
- v_fvi = J2 ./ (vind + accumarray(bp.rowi, cv(bp.rowe), sz)); 
+ v_fvi = J2 ./ (vind + row_sum * cv); 
 %--------------------------------------------------------------------------
 
  
@@ -63,10 +65,10 @@
 
 
 %-----------------Messages v -> f - to Indirected Nodes--------------------
- v_vf = 1 ./ (accumarray(bp.coli, v_fvi(bp.cole), sz) + bp.Lv_fv);
+ v_vf = 1 ./ (col_sum * v_fvi + bp.Lv_fv);
  
  cmv  = m_fv .* v_fvi;
- m_vf = (accumarray(bp.coli, cmv(bp.cole), sz) + bp.Lm_fv) .* v_vf;
+ m_vf = (col_sum * cmv + bp.Lm_fv) .* v_vf;
 %--------------------------------------------------------------------------
 
  end
