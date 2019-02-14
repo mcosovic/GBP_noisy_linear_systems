@@ -42,11 +42,8 @@
 
      
 %------------Messages f -> v - from Indirected Factor Nodes----------------
- cm   = J .* m_vf;
- m_fv = (mind - row_sum * cm) ./ J;
-  
- cv    = J2 .* v_vf;
- v_fvi = J2 ./ (vind + row_sum * cv); 
+ m_fv  = (mind - row_sum * (J .* m_vf)) ./ J;
+ v_fvi = J2 ./ (vind + row_sum * (J2 .* v_vf)); 
 %--------------------------------------------------------------------------
 
  
@@ -66,9 +63,7 @@
 
 %-----------------Messages v -> f - to Indirected Nodes--------------------
  v_vf = 1 ./ (col_sum * v_fvi + bp.Lv_fv);
- 
- cmv  = m_fv .* v_fvi;
- m_vf = (col_sum * cmv + bp.Lm_fv) .* v_vf;
+ m_vf = (col_sum * (m_fv .* v_fvi) + bp.Lm_fv) .* v_vf;
 %--------------------------------------------------------------------------
 
  end

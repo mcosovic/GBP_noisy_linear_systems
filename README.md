@@ -1,6 +1,6 @@
 # Gaussian Belief Propagation Noisy Linear Systems Solver
 
-The algorithm provides the solution of the linear system of equations with Gaussian noise using belief propagation (BP) solver applied over the factor graph. 
+The solver provides the solution of the linear system of equations with Gaussian noise using belief propagation (BP) algorithm applied over the factor graph. 
 
 ## The System Model
 We observe a noisy linear system of equations with real coefficients and variables:
