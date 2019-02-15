@@ -6,7 +6,15 @@
  bp.pos_time = toc;
  
  m = bp.mean;
- A = [(1:bp.Nvar)' m wls.x abs(m - wls.x)];
+ A = [(1:bp.Nvar)' m wls.x_qr abs(m - wls.x_qr)];
+ 
+ if (wls.war_qr == "")
+     wls.war_qr = "no warning";
+ end
+ 
+ if (wls.war_ml == "")
+     wls.war_ml = "no warning";
+ end
 %--------------------------------------------------------------------------
 
 
@@ -24,7 +32,12 @@
  fprintf ('\tNumber of Factor Nodes: %d\n', bp.Nfac)
  fprintf ('\tNumber of Links: %d\n', bp.Nmsg + bp.Nfac - bp.Nind)
  disp(' ')
- fprintf('\tWeighted Least Squares: %2.5f seconds\n', wls.time)
+ fprintf('\tWeighted Least Squares using QR Decomposition: %2.5f seconds\n', wls.time_qr)
+ fprintf('\tNumerical Stability: %s\n', wls.war_qr)
+ disp(' ')
+ fprintf('\tWeighted Least Squares using mldivide: %2.5f seconds\n', wls.time_ml)
+ fprintf('\tNumerical Stability: %s\n', wls.war_ml)
+  disp(' ')
  fprintf('\tPreprocessing: %2.5f seconds\n', bp.pre_time)
  fprintf('\tBelief Propagation Iterations: %2.5f seconds\n', bp.iter_time)
  fprintf('\tPostprocessing: %2.5f seconds\n', bp.pos_time)

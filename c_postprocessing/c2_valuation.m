@@ -3,7 +3,7 @@
  
  
 %--------------------State Estimation WLS Evaluation-----------------------
- f = data.A * wls.x; 
+ f = data.A * wls.x_qr; 
  
  wls.mae  = sum(abs(data.b - f)) / bp.Nfac; 
  wls.rmse = ((sum(data.b - f).^2) / bp.Nfac)^(1/2);    

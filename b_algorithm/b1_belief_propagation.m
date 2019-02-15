@@ -26,8 +26,7 @@
  J  = full(bp.Aind(bp.idx));
  J2 = J.^2;
  
- m_fvp = m_vf;
- 
+ m_fvp   = m_vf;
  row_sum = sparse(bp.rowi, bp.rowe, 1, bp.Nmsg, bp.Nmsg);
  col_sum = sparse(bp.coli, bp.cole, 1, bp.Nmsg, bp.Nmsg);
 
@@ -52,7 +51,7 @@
  
 
 %-----------------------------Stopping-------------------------------------
- if all(abs(m_fvp - m_fv) < user.stop) 
+ if min(abs(m_fvp - m_fv) < user.stop) 
     break
  end
  m_fvp = m_fv;
@@ -78,10 +77,8 @@
 
  sz = [bp.Nvar 1];
 
- varii = accumarray(bp.col, v_fvi, sz) + 1 ./ bp.vloc;
- cmv   = m_fv .* v_fvi;
- 
- vari    = 1 ./ varii;
+ cmv     = m_fv .* v_fvi;
+ vari    = 1 ./ (accumarray(bp.col, v_fvi, sz) + 1 ./ bp.vloc);
  bp.mean = (accumarray(bp.col, cmv, sz) + bp.zloc ./ bp.vloc) .* vari;
 %--------------------------------------------------------------------------
 
