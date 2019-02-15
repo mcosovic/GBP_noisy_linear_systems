@@ -26,8 +26,7 @@
  J  = full(bp.Aind(bp.idx));
  J2 = J.^2;
  
- m_fvp = [];
- stopi = m_vf;
+ m_fvp = m_vf;
  
  row_sum = sparse(bp.rowi, bp.rowe, 1, bp.Nmsg, bp.Nmsg);
  col_sum = sparse(bp.coli, bp.cole, 1, bp.Nmsg, bp.Nmsg);
@@ -49,15 +48,14 @@
  
 %---------------------------Convergence Fix--------------------------------
  [m_fv] = b2_converg_fix(k, m_fv, m_fvp, user.alph, bp.wow);
- m_fvp = m_fv;
 %-------------------------------------------------------------------------- 
  
 
 %-----------------------------Stopping-------------------------------------
- if all(abs(stopi - m_fv) < user.stop)
+ if all(abs(m_fvp - m_fv) < user.stop) 
     break
  end
- stopi = m_fv;
+ m_fvp = m_fv;
 %--------------------------------------------------------------------------
 
 

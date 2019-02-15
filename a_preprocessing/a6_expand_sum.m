@@ -5,14 +5,12 @@
 %------------------------Expand - Initialization---------------------------
  [row, col] = find(bp.Aind);
  
- row_un  = unique(row);
- counts  = hist(row, row_un);
+ counts  = hist(row, unique(row));
  row_di  = sum(counts .* (counts - 1));
  bp.rowi = zeros(row_di, 1);
  row_idx = zeros(row_di, 1);
  
- col_un  = unique(col);
- counts  = hist(col, col_un);
+ counts  = hist(col, unique(col));
  col_di  = sum(counts .* (counts - 1));
  bp.coli = zeros(col_di,1);
  col_idx = zeros(col_di,1);
@@ -62,7 +60,7 @@ end
 
 
 %-----------------------Expand Local Factor Nodes--------------------------
- C     = 1 ./ bp.vloc;
+ C = 1 ./ bp.vloc;
  bp.Lv_fv = C(loc_idx);
  
  Lm_fv = bp.zloc .* C;

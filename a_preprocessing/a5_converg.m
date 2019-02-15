@@ -5,6 +5,5 @@
 %-----------------------Randomized Damping Messages------------------------
  bp.idx  = find(bp.Aind);
  bp.Nmsg = length(bp.idx);
- temp    = ones(bp.Nmsg, 1);
- bp.wow  = logical(binornd(temp, user.prob));
+ bp.wow  = logical(binornd(ones(bp.Nmsg, 1), user.prob));
 %--------------------------------------------------------------------------
