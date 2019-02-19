@@ -6,7 +6,7 @@
  bp.pos_time = toc;
  
  m = bp.mean;
- A = [(1:bp.Nvar)' m wls.x_qr abs(m - wls.x_qr)];
+ A = [(1:bp.Nvar)' m wls.x_ml abs(m - wls.x_ml)];
  
  if (wls.war_qr == "")
      wls.war_qr = "no warning";

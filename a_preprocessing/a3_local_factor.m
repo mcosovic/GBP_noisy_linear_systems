@@ -23,38 +23,30 @@
 
 
 %------------------Merge Multiple Directed Factor Nodes--------------------
- Adir = bp.Inc(bp.idx_dir, :);
+ Adir = full(bp.Inc(bp.idx_dir, :));
  
- mrg = sum(Adir) > 1;
- Amr = Adir(:, mrg);
- rem = logical(sum(Amr, 2));
+ idx = find(Adir);
+ [~, col] = find(Adir);
  
- vi = spdiags(1 ./ vdir, 0, Ndir, Ndir) * Amr;
- m  = spdiags(zdir, 0, Ndir, Ndir) * Amr;
- 
- vdiri = sum(vi);
- var   = 1 ./ vdiri';
-  
- msum = sum(m .* vi); 
- mean = msum' .* var;
+ m = spdiags(zdir, 0, Ndir, Ndir) * Adir;
+ v = spdiags(vdir, 0, Ndir, Ndir) * Adir;
 
- zdir(rem)   = [];
- vdir(rem)   = [];
- Adir(rem,:) = [];
+ zdir = m(idx);
+ vdir = v(idx);
+ idx  = unique(col);
 
- zdir = [zdir; mean];
- vdir = [vdir; var];
+ vdiri = 1 ./ vdir;
+ var   = (accumarray(col, vdiri, [bp.Nvar 1]));
+ var   = 1./var(idx);
+ mean  = accumarray(col, zdir .* vdiri, [bp.Nvar 1]); 
+ mean  = mean(idx).* var;
 %--------------------------------------------------------------------------
- 
+
 
 %--------------------------Local Factor Nodes------------------------------  
- idx      = sum(Adir,1) ~= 0;
- idx(mrg) = 0;
- col      = [find(idx) find(mrg)];
-
  bp.zloc = user.mean * ones(bp.Nvar,1);
  bp.vloc = user.vari * ones(bp.Nvar, 1);
  
- bp.zloc(col) = zdir; 
- bp.vloc(col) = vdir;
+ bp.zloc(idx) = mean; 
+ bp.vloc(idx) = var;
 %-------------------------------------------------------------------------- 
