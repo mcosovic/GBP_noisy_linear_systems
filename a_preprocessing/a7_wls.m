@@ -16,12 +16,16 @@
  pre = toc;
 
  tic
- [Q,R,P] = qr(Hti);  
- r       = sprank(Hti);                                                       
- Qn      = Q(:,1:r);                                                           
- U       = R(1:r,1:r);    
-
- wls.x_qr = full(P * [U \ (Qn' * rti); sparse(bp.Nvar - r, 1)]); 
+ if issparse(Hti)
+    R = qr(Hti); 
+ else
+    R = triu(qr(Hti)); 
+ end
+ x   = R \ (R' \ (Hti' * rti));
+ r   = rti - Hti * x;
+ err = R \ (R' \ (Hti' * r));
+ 
+ wls.x_qr = x + err;
  
  [wls.war_qr] = lastwarn;
  wls.time_qr  = toc + pre; 
