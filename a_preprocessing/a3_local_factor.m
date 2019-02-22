@@ -23,7 +23,7 @@
 
 
 %------------------Merge Multiple Directed Factor Nodes--------------------
- Adir = full(bp.Inc(bp.idx_dir, :));
+ Adir = bp.Inc(bp.idx_dir, :);
  
  idx = find(Adir);
  [~, col] = find(Adir);
@@ -40,6 +40,7 @@
  var   = 1./var(idx);
  mean  = accumarray(col, zdir .* vdiri, [bp.Nvar 1]); 
  mean  = mean(idx).* var;
+ 
 %--------------------------------------------------------------------------
 
 

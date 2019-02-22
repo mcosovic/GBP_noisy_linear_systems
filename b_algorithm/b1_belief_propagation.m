@@ -27,8 +27,8 @@
  J2 = J.^2;
  
  m_fvp   = m_vf;
- row_sum = sparse(bp.rowi, bp.rowe, 1, bp.Nmsg, bp.Nmsg);
- col_sum = sparse(bp.coli, bp.cole, 1, bp.Nmsg, bp.Nmsg);
+ row_sum = bp.row_sum;
+ col_sum = bp.col_sum;
 
  bp.pre_time = toc + bp.pre_time;
 %-------------------------------------------------------------------------- 
