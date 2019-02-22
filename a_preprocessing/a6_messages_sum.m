@@ -2,20 +2,19 @@
     
  
  
-%--------------------------Indirect Factor Nodes---------------------------
+%-----------------------------Initialization-------------------------------
  [bp.row, bp.col] = find(bp.Aind);
+ 
+ A  = sparse(bp.Nind, bp.Nvar);
+ ms = (1:bp.Nmsg)';
 %-------------------------------------------------------------------------- 
  
 
 %-----------------------Mask Row Messages Summation------------------------
- dim = (1:bp.Nmsg)';
- 
- A = bp.Aind;
- A(bp.idx) = dim;
+ A(bp.idx) = ms;
  Ap = A(bp.row,:);
  
- [r1, c1] = size(Ap);
- id = sparse(dim, bp.col, true, r1, c1);
+ id = sparse(ms, bp.col, true, bp.Nmsg, bp.Nvar);
  Ap(id) = 0;
 
  [row, ~, col] = find(Ap);
@@ -27,8 +26,7 @@
  A  = A';
  Ap = A(bp.col,:);
 
- [r1, c1] = size(Ap);
- id = sparse((1:bp.Nmsg)', bp.row, true, r1, c1);
+ id = sparse(ms, bp.row, true, bp.Nmsg, bp.Nind);
  Ap(id) = 0;
 
  [row, ~, col] = find(Ap);
