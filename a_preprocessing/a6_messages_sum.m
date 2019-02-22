@@ -12,17 +12,14 @@
  
  A = bp.Aind;
  A(bp.idx) = dim;
-
  Ap = A(bp.row,:);
- [r1, c1] = size(Ap);
  
- M  = sparse(dim, bp.col, 1, r1, c1);
- id = logical(M);
+ [r1, c1] = size(Ap);
+ id = sparse(dim, bp.col, true, r1, c1);
  Ap(id) = 0;
 
  [row, ~, col] = find(Ap);
-
- bp.row_sum = sparse(row, col, 1, bp.Nmsg, bp.Nmsg);
+ bp.row_sum    = sparse(row, col, 1, bp.Nmsg, bp.Nmsg);
 %--------------------------------------------------------------------------
 
 
@@ -31,14 +28,11 @@
  Ap = A(bp.col,:);
 
  [r1, c1] = size(Ap);
- M = sparse((1:bp.Nmsg)', bp.row, 1, r1, c1);
-  
- id = logical(M);
+ id = sparse((1:bp.Nmsg)', bp.row, true, r1, c1);
  Ap(id) = 0;
 
  [row, ~, col] = find(Ap);
-
- bp.col_sum = sparse(row, col, 1, bp.Nmsg, bp.Nmsg);
+ bp.col_sum    = sparse(row, col, 1, bp.Nmsg, bp.Nmsg);
 %--------------------------------------------------------------------------
 
 
