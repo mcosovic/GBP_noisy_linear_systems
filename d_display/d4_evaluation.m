@@ -1,4 +1,4 @@
- function [] = d4_valuation(wls, bp)
+ function [] = d4_evaluation(wls, bp)
  
  
  

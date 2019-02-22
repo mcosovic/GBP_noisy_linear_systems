@@ -2,11 +2,11 @@
   
 
 
-%------------------------Force QR Decomposition ---------------------------
+%-------------------------Force QR Decomposition---------------------------
+ tic
  warning('off')
  lastwarn('');
  
- tic
  C = spdiags(data.v, 0, bp.Nfac, bp.Nfac);
  E = speye(bp.Nfac, bp.Nfac);
  W = C.^(1/2) \ E;
@@ -32,10 +32,10 @@
 %--------------------------------------------------------------------------
 
 
-%----------------------------Matlab mldivide-------------------------------
+%-----------------------------Matlab mldivide------------------------------
+ tic
  lastwarn('');
  
- tic
  wls.x_ml = (Hti' * Hti) \ (Hti' * rti);
 
  [wls.war_ml] = lastwarn;

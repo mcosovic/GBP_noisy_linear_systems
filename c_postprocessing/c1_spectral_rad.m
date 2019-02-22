@@ -2,14 +2,14 @@
 
 
  
-%------------------------Coefficient Matrix--------------------------------
+%---------------------------Coefficient Matrix-----------------------------
  Ja = bp.Aind';
  H  = spdiags(nonzeros(Ja), 0, bp.Nmsg, bp.Nmsg);
  Hi = (H \ speye([bp.Nmsg bp.Nmsg]));
 %--------------------------------------------------------------------------
 
 
-%-------------------Messages Variance fv Matrix----------------------------
+%------------------------Messages Variance Matrix--------------------------
  v_fv_i = sparse(bp.row, bp.col, bp.v_fvi, bp.Nind, bp.Nvar);
  Vfv    = v_fv_i';
  Vi     = spdiags(nonzeros(Vfv), 0, bp.Nmsg, bp.Nmsg);
@@ -32,7 +32,7 @@
 %--------------------------------------------------------------------------
 
 
-%---------------------Local Variances Matrix Vd----------------------------
+%------------------------Local Variances Matrix Vd-------------------------
  l  = spdiags(1 ./ bp.vloc, 0, bp.Nvar, bp.Nvar);
  li = (l * bp.Inc')';
  ij = nonzeros(id);
@@ -40,7 +40,7 @@
 %--------------------------------------------------------------------------
 
 
-%-----------------------Constant Equation Parts----------------------------
+%-------------------------Constant Equation Parts--------------------------
  idx = find(H);
  
  M = Sf * Vi * Sf';
@@ -63,7 +63,7 @@
 %--------------------------------------------------------------------------
 
 
-%--------------Spectral Radius for Synchronous Scheduling------------------
+%---------------Spectral Radius for Synchronous Scheduling-----------------
  Ome_syn = Hi * Sx * H * W * Sf' * Vi;
   
  opts.tol   = 1e-14;

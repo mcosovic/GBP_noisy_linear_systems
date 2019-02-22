@@ -2,7 +2,7 @@
     
 
 
-%----------------------Disconnected Node-----------------------------------
+%----------------------------Disconnected Node-----------------------------
  zero_col = find(all(bp.Aind == 0, 1));  
 
  if ~isempty(zero_col)

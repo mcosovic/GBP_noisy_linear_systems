@@ -2,7 +2,7 @@
     
 
  
-%------------------Number of Variables and Factor Nodes--------------------
+%-------------------Number of Variable and Factor Nodes--------------------
  tic
  [bp.Nfac, bp.Nvar] = size(data.A);
 %--------------------------------------------------------------------------
