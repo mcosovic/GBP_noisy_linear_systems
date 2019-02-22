@@ -49,7 +49,7 @@
  
 
 %--------------------------------Stopping----------------------------------
- if min(abs(m_fvp - m_fv) < user.stop) 
+ if max(abs(m_fvp - m_fv)) < user.stop 
     break
  end
  m_fvp = m_fv;
