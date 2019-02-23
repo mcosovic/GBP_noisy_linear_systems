@@ -1,5 +1,5 @@
  function [bp] = a4_indirect_factor(data, bp)
- 
+
 
 
 %--------------------------Indirect Factor Nodes---------------------------
@@ -10,6 +10,6 @@
 
  bp.zind = data.b(idx_ind);
  bp.vind = data.v(idx_ind);
- 
- bp.Nind = length(bp.zind); 
+
+ bp.Nind = length(bp.zind);
 %--------------------------------------------------------------------------

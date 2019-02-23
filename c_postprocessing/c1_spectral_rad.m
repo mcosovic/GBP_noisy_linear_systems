@@ -1,7 +1,7 @@
  function [bp] = c1_spectral_rad(user, bp)
 
 
- 
+
 %---------------------------Coefficient Matrix-----------------------------
  Ja = bp.Aind';
  H  = spdiags(nonzeros(Ja), 0, bp.Nmsg, bp.Nmsg);
@@ -13,7 +13,7 @@
  v_fv_i = sparse(bp.row, bp.col, bp.v_fvi, bp.Nind, bp.Nvar);
  Vfv    = v_fv_i';
  Vi     = spdiags(nonzeros(Vfv), 0, bp.Nmsg, bp.Nmsg);
-%-------------------------------------------------------------------------- 
+%--------------------------------------------------------------------------
 
 
 %-------------------------Computational Matrix Sf--------------------------
@@ -42,10 +42,10 @@
 
 %-------------------------Constant Equation Parts--------------------------
  idx = find(H);
- 
+
  M = Sf * Vi * Sf';
  M = spdiags(M(idx), 0, bp.Nmsg, bp.Nmsg);
- 
+
  VdM = Vd + M; 
  W   = spdiags(1 ./ VdM(idx), 0, bp.Nmsg, bp.Nmsg);
 %--------------------------------------------------------------------------
@@ -55,7 +55,7 @@
  c   = sum(bp.Inc, 2);
  n   = size(c,1); 
  tmp = cell(n,1);
- 
+
  for i = 1:n
      tmp{i} = 1 - speye(c(i));   
  end
@@ -65,7 +65,7 @@
 
 %---------------Spectral Radius for Synchronous Scheduling-----------------
  Ome_syn = Hi * Sx * H * W * Sf' * Vi;
-  
+
  opts.tol   = 1e-14;
  opts.maxit = 500;
  try

@@ -1,6 +1,6 @@
  function  [bp, wls] = a1_preprocessing(data, user)
-  
- 
+
+
 
 %-------------------Number of Variable and Factor Nodes--------------------
  [bp] = a2_num_var_fac(data);

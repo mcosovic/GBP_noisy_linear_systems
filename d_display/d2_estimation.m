@@ -1,17 +1,17 @@
  function [] = d2_estimation(bp, wls, stop)
 
- 
- 
+
+
 %-------------------------------Display Data-------------------------------
  bp.pos_time = toc;
- 
+
  m = bp.mean;
  A = [(1:bp.Nvar)' m wls.x_ml abs(m - wls.x_ml)];
- 
+
  if (wls.war_qr == "")
      wls.war_qr = "no warning";
  end
- 
+
  if (wls.war_ml == "")
      wls.war_ml = "no warning";
  end
@@ -42,8 +42,8 @@
  fprintf('\tPostprocessing: %2.5f seconds\n', bp.pos_time)
  disp(' ')
 
- disp('  __________________________________________________________________') 
+ disp('  __________________________________________________________________')
  disp('    Variable         BP         WLS               Difference')
- disp('  ------------------------------------------------------------------') 
+ disp('  ------------------------------------------------------------------')
  fprintf('%8.f %16.4f %11.4f %21.2e\n', A') 
  disp('  __________________________________________________________________')

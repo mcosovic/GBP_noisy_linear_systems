@@ -26,6 +26,7 @@ data.mat file with variables:
 
  ## User Options
 1. Post-Processing Options:
+   - **user.save** - write data to a text file;
    - **user.radius** - compute spectral radius for synchronous and randomized damping scheduling, if spectral radius is less than 1 the BP algorithm converges;
    - **user.error**  - compute mean absolute error, root mean square error and weighted residual sum of squares for solution;
 

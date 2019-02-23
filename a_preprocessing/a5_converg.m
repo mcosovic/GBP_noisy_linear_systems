@@ -1,5 +1,5 @@
  function [bp] = a5_converg(user, bp)
-    
+
 
 
 %-----------------------Randomized Damping Messages------------------------
