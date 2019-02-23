@@ -3,10 +3,10 @@
 
 
 %----------------------------Disconnected Node-----------------------------
- zero_col = find(all(bp.Aind == 0, 1));
+ zero_col = sum(bp.Inc, 1) == 0;
 
- if ~isempty(zero_col)
-    g = sprintf('%d ', zero_col);
+ if any(zero_col)
+    g = sprintf('%d ', find(zero_col));
     fprintf('Variable nodes connected only on the singly-conected factor node: %s', g)
  end
 %--------------------------------------------------------------------------

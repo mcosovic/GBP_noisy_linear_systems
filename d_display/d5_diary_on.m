@@ -1,4 +1,4 @@
- function [] = diary_on(bp, user)
+ function [] = d5_diary_on(bp, user)
 
 
 

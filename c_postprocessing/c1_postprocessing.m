@@ -4,14 +4,14 @@
 
 %-----------------------------Spectral Radius------------------------------
  if user.radius == 1
-    [bp] = c1_spectral_rad(user, bp);
+    [bp] = c2_spectral_rad(user, bp);
  end
 %--------------------------------------------------------------------------
 
 
 %-----------------------State Estimation Evaluation------------------------
  if user.error == 1
-    [wls, bp] = c2_evaluation(data, wls, bp);
+    [wls, bp] = c3_evaluation(data, wls, bp);
  end
 %--------------------------------------------------------------------------
 

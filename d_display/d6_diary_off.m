@@ -1,4 +1,4 @@
- function [] = diary_off(user)
+ function [] = d6_diary_off(user)
 
 
 

@@ -1,4 +1,4 @@
- function [bp] = c1_spectral_rad(user, bp)
+ function [bp] = c2_spectral_rad(user, bp)
 
 
 

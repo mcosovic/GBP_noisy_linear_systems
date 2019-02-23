@@ -1,4 +1,4 @@
- function [wls, bp] = c2_evaluation(data, wls, bp)
+ function [wls, bp] = c3_evaluation(data, wls, bp)
 
 
 
