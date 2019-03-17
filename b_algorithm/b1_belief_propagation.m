@@ -3,7 +3,6 @@
 
 
 %--------------------------Indirect Factor Nodes---------------------------
- tic
  mind = spdiags(bp.zind, 0, bp.Nind, bp.Nind) * bp.Inc;
  vind = spdiags(bp.vind, 0, bp.Nind, bp.Nind) * bp.Inc;
 

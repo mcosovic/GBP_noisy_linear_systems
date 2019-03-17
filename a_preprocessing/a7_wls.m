@@ -3,7 +3,7 @@
 
 
 %-------------------------Force QR Decomposition---------------------------
- warning('off'); tic
+ warning('off'); 
  lastwarn('');
 
  C = spdiags(data.v, 0, bp.Nfac, bp.Nfac);
@@ -36,7 +36,7 @@
  wls.x_ml = (Hti' * Hti) \ (Hti' * rti);
 
  [wls.war_ml] = lastwarn;
- wls.time_ml  = toc + pre;
+ wls.time_ml  = toc + pre; tic
 
  warning('on')
 %--------------------------------------------------------------------------

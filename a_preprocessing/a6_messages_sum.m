@@ -46,5 +46,5 @@
  Lm_fv = bp.zloc .* C;
  bp.Lm_fv = Lm_fv(bp.col);
 
- bp.pre_time = toc; 
+ bp.pre_time = toc; tic 
 %--------------------------------------------------------------------------
